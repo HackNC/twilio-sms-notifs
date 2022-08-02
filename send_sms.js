@@ -11,9 +11,14 @@ const client = require('twilio')(accountSid, authToken);
 
 //array for all phone numbers goes here.
 
-//const numbers = ['+17046993417', '+15712508955','+13365080858', '+13308613678', '+19806218983', '+19806218982', '+17046996482', '+19193586136', '+17049151801', '+15167219196'];
+async function sendScheduledSMS(){
+  const sendWhen = new Date(new Date().getTime() + 61 * 60000); // sends 61 minutes after the current time, sendWhen constant is used to send the message
+}
 
-/*var fs = require('fs');
+
+const numbers = ['+17046993417', '+15712508955','+13365080858', '+13308613678', '+19806218983', '+19806218982', '+17046996482', '+19193586136', '+17049151801', '+15167219196'];
+
+var fs = require('fs');
 
 console.log('Executed Before File Reading');
 const numbers = [];
@@ -27,7 +32,7 @@ fs.readFile('./clientsfile.txt', 'utf8', function(error, data) {
       numbers.push(phonenumbers[i]);
     }
    
-});*/
+});
 
 console.log('Executed Before File Reading');
 const fs = require("fs"); 
@@ -54,6 +59,8 @@ Promise.all (
      //body: 'Testing one, two, three! Come to the great hall! BTW This is Elvin from HackNC, not a hacker, text me if you got this message if you are able to atm haha.', 
      //from: '+13254253605',
      from: '+19362376004',
+      scheduleType: 'fixed',
+      sendAt: sendWhen.toISOString(),
      
      
      to: number,
